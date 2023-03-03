@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign up</title>
+        <!-- <link rel="stylesheet" href="static/templates/"> -->
+        <style>
+            body{
+                font-family: sans-serif;
+
+                 
+            }
+            .all{
+                display: flex;
+            }
+            .left{
+               
+                width: 65%;
+                height: auto;
+                padding-top: 60px;
+                text-align: center;
+                /* margin: 100px 100px 100px 100px; */
+               
+             
+                
+            }
+            
+            .input{
+                border-color: black;
+                border-width: 2px;
+                border-style: solid;
+                width: 450px;
+                height: 50px;
+                border-radius: 8px;
+                font-size: 20px;
+                padding-left: 10px;
+                
+
+            }
+            .text{
+                display: block;
+                text-align: justify;
+                margin-left: 100px;
+                padding: auto;
+                font-size: 25px;
+                
+            }
+            .t{
+                margin: 10px 0 20px 0;
+            }
+            #sub{
+                background-color:black;
+                color: white;
+            }
+            #div{
+                display: flex;
+                justify-content: center;
+               
+            }
+            #img{
+                margin-left: 20px;
+              
+                transform: rotate(35deg);
+            }
+            .right{
+                
+                width: 80%;
+                height: 725px;
+                background-color: chartreuse;
+            }
+            .fon{
+                width: 100%;
+                height: 750px;
+
+
+            }
+            #home{
+                display: flex;
+                margin-left: 500px;
+                margin-top: 100px;
+                width: 150px;
+                height: 150px;
+            }
+            .check {
+                margin-right: 80px;
+                width: 20px;
+                height: 20px;
+                border-radius: 5px;
+                margin-top: 20px;
+                margin-bottom: 25px;
+              
+               
+            }
+            .gg{
+                display: flex;
+            }
+            .int{
+                border-color: black;
+                border-width: 2px;
+                border-style: solid;
+                width: 180px;
+                height: 60px;
+                border-radius: 6px;
+                font-size: 20px;
+                padding-left: 5px;
+                margin-left: 95px;
+                margin-top: 10px;
+            }
+            .je{
+                width: 30px;
+                height: auto;
+                margin: 10px;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class ="all">
+            <div class ="right">
+                <img  class ="fon" src="static/img/ui.png"> 
+               
+                   
+           </div>
+        <div class ="left">
+            <form method="POST" action="/signup">
+                <div id ="div">
+                <p style ="font-size: 35px;">Create Account</p>
+
+                </div>
+                <div class ="t">
+             
+                    <input class ="input" name ="Name" placeholder="Name" type="text"/><br>
+                    </div>
+                <div class ="t">
+                <input class ="input" name ="email" placeholder="email" type="email"/><br>
+                </div>
+                <div class = "t">
+            
+                <input class ="input" name="Password" placeholder="Password" type ="password"/> <br>
+                </div>
+
+                <input class="check"type="checkbox" name="chek" />
+                <label class ="check">I agree to the terms and Privacy Policy</label><br>
+                <div class="gg">
+                    <input id ="sub"class ="int" type="submit" value="Sign Up">
+                    <a href="/loginIndex"><input style ="background-color: white;"class ="int" type="button" value="Sign in"></a>
+                </div>
+
+                <div class="hh">
+                    <p>or use your email</p>
+                    <a href="https://www.google.com/"><img class ="je" src="static/img/google.png"></a>
+                    <a href="https://www.facebook.com/"><img class ="je"src="static/img/ht.webp"></a>
+                    <a href="https://www.instagram.com/"><img class ="je"src="static/img/insta.png"></a>
+                    <a href="https://web.whatsapp.com/"><img class ="je"src="static/img/whatsapp.png"></a>
+
+                </div>
+            </form>
+
+            
+        </div>
+        
+        </div>
+    </body>
+</html>

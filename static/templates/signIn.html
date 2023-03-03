@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <style>
+            body{
+                font-family: sans-serif;
+
+                 
+            }
+            .all{
+                display: flex;
+            }
+            .left{
+               
+                width: 65%;
+                height: auto;
+                padding-top: 60px;
+                text-align: center;
+                /* margin: 100px 100px 100px 100px; */
+               
+             
+                
+            }
+            
+            .input{
+                border-color: black;
+                border-width: 2px;
+                border-style: solid;
+                width: 450px;
+                height: 50px;
+                border-radius: 6px;
+                font-size: 20px;
+                padding-left: 10px;
+                
+
+            }
+            .text{
+                display: block;
+                text-align: justify;
+                margin-left: 100px;
+                padding: auto;
+                font-size: 25px;
+                
+            }
+            .t{
+                margin: 10px 0 20px 0;
+            }
+            #sub{
+                background-color:black;
+                color: white;
+            }
+            #div{
+                display: flex;
+                justify-content: center;
+               
+            }
+            #img{
+                margin-left: 20px;
+              
+                transform: rotate(35deg);
+            }
+            .right{
+                
+                width: 80%;
+                height: 725px;
+                background-color: chartreuse;
+            }
+            .fon{
+                width: 100%;
+                height: 725px;
+
+
+            }
+            #home{
+                display: flex;
+                margin-left: 500px;
+                margin-top: 100px;
+                width: 150px;
+                height: 150px;
+            }
+            
+        </style>
+    </head>
+    <body>  
+      <div class ="all">
+        <div class ="left">
+                    
+
+            <form method="POST" action="/login" >
+                <div id ="div">
+                <p style ="font-size: 35px;">Welcome back</p>
+                <img id ="img" src="static/img/img.png" width="50px" height="50px">
+                </div>
+                <div class ="t">
+                <label class ="text">Email</label><br>
+                <input class ="input" name ="username" placeholder="login" type="text"/><br>
+                </div>
+                <div class = "t">
+                <label class ="text">Password</label><br>
+                <input class ="input" name="password" placeholder="********" type ="password"/> <br>
+                </div>
+                <input class ="input" id ="sub" type="submit" value="login">
+                
+            </form>
+            <img id="home" src ="static/img/i.webp">
+        </div>
+   
+        <div class ="right">
+             <img  class ="fon" src="static/img/ui.png"> 
+            
+                
+        </div>
+        </div>
+    </body>
+</html>
