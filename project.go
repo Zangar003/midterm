@@ -93,20 +93,73 @@ func Logout(response http.ResponseWriter, request *http.Request) {
 	http.Redirect(response, request, "/loginIndex", http.StatusSeeOther)
 }
 
-func index(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles("static/templates/index.html")
+type Article struct {
+	id                     uint16
+	Title, Anons, FullText string
+}
 
+var posts = []Article{}
+
+func index(w http.ResponseWriter, r *http.Request) {
+
+	t, err := template.ParseFiles("static/templates/index.html")
+	if err != nil {
+		fmt.Fprintf(w, err.Error())
+	}
+
+	res, err := db.Query("Select * from `articles`")
+
+	if err != nil {
+		panic(err)
+	}
+	posts = []Article{}
+	for res.Next() {
+		var post Article
+		err = res.Scan(&post.id, &post.Title, &post.Anons, &post.FullText)
+		if err != nil {
+			panic(err)
+		}
+		fmt.Println(fmt.Sprintf("Post: %s with id : %d", post.Title, post.id))
+
+		posts = append(posts, post)
+	}
+
+	t.ExecuteTemplate(w, "index", posts)
+}
+func create(w http.ResponseWriter, r *http.Request) {
+	t, err := template.ParseFiles("static/templates/create.html")
 	if err != nil {
 		fmt.Fprintf(w, err.Error())
 	}
 	t.Execute(w, nil)
 }
+func save_article(w http.ResponseWriter, r *http.Request) {
+	title := r.FormValue("title")
+	anons := r.FormValue("anons")
+	full_text := r.FormValue("full_text")
+	if title == "" || anons == "" || full_text == "" {
+		fmt.Fprintf(w, "write full data")
+	} else {
+
+		insert, err := db.Query(fmt.Sprintf("INSERT INTO `articles`(`title`, `anons`, `full_text`) VALUES('%s', '%s', '%s')", title, anons, full_text))
+
+		if err != nil {
+			panic(err)
+		}
+		defer insert.Close()
+		http.Redirect(w, r, "/", http.StatusSeeOther)
+	}
+
+}
+
 func handleRequest() {
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))))
 	http.HandleFunc("/login", loginPage)
 	http.HandleFunc("/signup", CreateAconut)
 	http.HandleFunc("/logout", Logout)
 	http.HandleFunc("/", index)
+	http.HandleFunc("/create", create)
+	http.HandleFunc("/save_article", save_article)
 
 	http.ListenAndServe(":8080", nil)
 }
